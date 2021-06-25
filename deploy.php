@@ -9,7 +9,7 @@ require 'recipe/slack.php';
 set('application', 'api-webhook');
 
 // Project repository
-set('repository', 'git@github.com:frf/webhook-bitbucket-to-discord.git');
+set('repository', 'git@github.com:frf/mytrail-api.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
@@ -34,8 +34,8 @@ add('writable_dirs', [
 // Hosts
 host('104.131.170.111')
     ->hostname('104.131.170.111')
-    ->user('webhook')
-    ->set('deploy_path', '/var/www/webhook');
+    ->user('mytrail')
+    ->set('deploy_path', '/var/www/mytrail');
 
 task('build', function () {
     run('cd {{release_path}} && build');
