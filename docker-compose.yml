@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   nginx:
     image: nginx:stable-alpine
@@ -16,7 +16,6 @@ services:
     build:
       context: .
       dockerfile: docker-configs/Dockerfile7.4
-    container_name: php74
     volumes:
       - ./:/var/www/html:delegated
       - ./docker-configs/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
@@ -28,7 +27,6 @@ services:
       REDIS_PORT: 6379
     network_mode: bridge
   redis:
-    container_name: redis
     image: redis
     volumes:
       - redis-data:/data:cached
