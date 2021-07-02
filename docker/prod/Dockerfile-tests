@@ -1,0 +1,16 @@
+FROM eduzz/php:7.4-cli-build
+
+WORKDIR /src
+
+COPY composer.json composer.lock /src/
+
+RUN set -x \
+    && mkdir tests database \
+    && composer.phar install --no-ansi --no-interaction --no-progress --no-scripts
+
+COPY . /src
+
+RUN set -x \
+     && composer.phar dump-autoload --optimize
+
+RUN ./vendor/bin/phpunit --coverage-clover ./coverage.xml --log-junit ./junit.xml
